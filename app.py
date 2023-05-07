@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import seaborn as sns
 import scikitplot as skplt
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.model_selection import train_test_split 
@@ -48,9 +49,9 @@ X = df.drop("Owned for", axis=1)
 y = df["Owned for"]
 
 # split data into train and test sets
-# 80% training and 20% test
+# 70% training and 30% test
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size = 0.2, random_state = 42)
+    X, y, test_size = 0.3, random_state = 42)
 
 # the exploratory data analysis showed that the dataset is imbalanced, oversampling is required to balance the dataset
 
@@ -76,10 +77,10 @@ rf_classif = pickle.load(open('rf_model.pkl','rb'))
 y_pred = rf_classif.predict(scalled_x_test)
 
 ## Dashboard
-st.title("Moped Bike Prediction :bar_chart: :bike: ")
+st.title("Moped Bike Prediction :bike: ")
 st.markdown("Predict Moped owned using reviews")
 
-tab1, tab2, tab3 = st.tabs(["Data :clipboard:", "Global Performance :weight_lifter:", "Local Performance :bicyclist:"])
+tab1, tab2, tab3, tab4 = st.tabs(["Data :clipboard:", "Exploratory Data Analysis :bar_chart:", "Global Performance :weight_lifter:", "Local Performance :bicyclist:"])
 
 
 with tab1:
@@ -87,6 +88,42 @@ with tab1:
     st.write(df)
 
 with tab2:
+    st.header("Exploratory Data Analysis")
+    st.text('')
+    st.text('')
+    
+    # compute percentage of Ownership
+    st.subheader("Percentage of Ownership")
+    fig1, ax1 = plt.subplots()
+    labels = 'Owned', 'Not Owned'
+    ax1.pie(df['Owned for'].value_counts(), explode=[0.04, 0.04], labels=labels, autopct='%1.1f%%',
+            shadow=True, startangle=90)
+    ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+    st.pyplot(fig1)
+    
+    st.text('')
+    st.text('')
+    
+    #   visualise visual appeal ratings and reliability ratings
+    st.subheader("Visual Appeal Ratings and Reliability Ratings")
+    st.text('')
+    
+    fig, axes = plt.subplots(1, 2, figsize=(15,8))
+
+    ax1 = sns.countplot(x='Visual Appeal', data=df, ax = axes[0]);
+    ax1.set(xlabel='Visual Appeal', ylabel='Ratings', title='Visual Appeal Ratings');
+
+    ax2 = sns.countplot(x='Reliability', data=df, ax = axes[1]);
+    ax2.set(xlabel='Reliability', ylabel='Ratings', title='Reliability Ratings');
+
+    st.pyplot(fig)
+
+    st.text('')
+    st.text('')
+    
+    
+with tab3:
     st.header("Confusion Matrix | Feature Importances")
     col1, col2 = st.columns(2)
     with col1:
@@ -105,7 +142,7 @@ with tab2:
     st.header("Classification Report")
     st.code(classification_report(y_test, y_pred))     
         
-with tab3:
+with tab4:
     sliders = []
     col1, col2 = st.columns(2)
     with col1:
