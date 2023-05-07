@@ -10,13 +10,10 @@ from sklearn.metrics import classification_report
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 from lime import lime_tabular
-
-
 import pickle
 
 
 # Build `wrangle` function
-
 def wrangle(filepath):
     # Read CSV file
     df = pd.read_csv(filepath)
@@ -130,7 +127,9 @@ with tab3:
             probability = probs[0][prediction[0]]
         
         with col2:
-            st.metric(label="Model Confidence", value="{:.2f} %".format(probability*100), delta="{:.2f} %".format((probability-0.5)*100))
+            st.metric(label="Model Confidence", 
+                      value="{:.2f} %".format(probability*100), 
+                      delta="{:.2f} %".format((probability-0.5)*100))
 
         # Rename columns to avoid whitespace and special characters
         df.columns = df.columns.str.replace(' ', '_')   
