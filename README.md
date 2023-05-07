@@ -14,7 +14,15 @@ To run the app locally, you need to initiate the following command from your ter
 
 `streamlit run app.py`
 
-To run the app online, click [Moped Predictor App]()
+To run the app online, click [Moped Predictor App](https://yusufokunlola-moped-prediction-app-4g93nh.streamlit.app/)
+
+## Exploratory Data Analysis
+1. Percentage of Ownership
+
+![Percentage of Ownership](https://user-images.githubusercontent.com/49354382/236672455-3bfd7204-a5d5-4749-97e2-8c13831218d8.png)
 
 
-![Percentage of Ownership]((https://user-images.githubusercontent.com/49354382/236672455-3bfd7204-a5d5-4749-97e2-8c13831218d8.png))
+
+2. Visual appeal ratings and Reliability ratings
+
+![Visual appeal ratings and Reliability ratings](https://user-images.githubusercontent.com/49354382/236672737-81681fbe-46c3-413c-88dd-2803942b0293.png)
