@@ -1,9 +1,20 @@
-# DataCamp-Certification: Data Scientist Associate Case Study
+# Moped Prediction
+This project was part of the fulfillment to earn DataCamp Certification: **Data Scientist Associate**.
 
-This project will enable EMO product team to make improvements to their mopeds through the reviews provided by the customers.
 
-I performed exploratory data analysis, predictive modeling and analytics on a customer review dataset.
+This aim of the project is to enable EMO product team to make improvements to their mopeds through the reviews provided by the customers.
 
-Logistic regression model and Decision Tree model classification models were deployed.
+Exploratory data analysis, pre-processing, modelling and deployment was carried out on a customer review dataset.
 
-The models were evaluated by the confusion matrix and the F1 Score metrics, the Decision Tree model out performed Logistic regression model.
+The dataset was evaluated using F1 Score metrics and confusion matrix on two classification models namely; Logistic Regression and Decision Tree. The Decision Tree model out performed Logistic regression model.
+
+An ensemble model, Random Forest Classifier was used for model deployment using [Streamlit](https://streamlit.io/).
+
+To run the app locally, you need to initiate the following command from your terminal:
+
+`streamlit run app.py`
+
+To run the app online, click [Moped Predictor App]()
+
+
+![Percentage of Ownership]((https://user-images.githubusercontent.com/49354382/236672455-3bfd7204-a5d5-4749-97e2-8c13831218d8.png))
