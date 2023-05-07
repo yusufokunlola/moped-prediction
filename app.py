@@ -79,7 +79,7 @@ y_pred = rf_classif.predict(scalled_x_test)
 st.title("Moped Bike Prediction :bar_chart: :bike: ")
 st.markdown("Predict Moped owned using reviews")
 
-tab1, tab2, tab3 = st.tabs(["Data :clipboard:", "Global Performance :weight_lifter:", "Local Performance :bicyclist:"])
+tab1, tab2, tab3 = st.tabs(["Data", "Global Performance", "Local Performance"])
 
 with tab1:
     st.header("Moped Dataset")
