@@ -11,10 +11,11 @@ The dataset was evaluated using F1 Score metrics and confusion matrix on two cla
 An ensemble model, Random Forest Classifier was used for model deployment using [Streamlit](https://streamlit.io/).
 
 To run the app locally, you need to initiate the following command from your terminal:
-
+```bash
 `streamlit run app.py`
+```
 
-To run the app online, click [Moped Predictor App](https://yusufokunlola-moped-prediction-app-4g93nh.streamlit.app/)
+To run the app online, click [Moped Predictor App](https://moped-prediction.streamlit.app/)
 
 ## Exploratory Data Analysis
 1. Percentage of Ownership
