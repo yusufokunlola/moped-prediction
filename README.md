@@ -12,7 +12,7 @@ An ensemble model, Random Forest Classifier was used for model deployment using 
 
 To run the app locally, you need to initiate the following command from your terminal:
 ```bash
-`streamlit run app.py`
+streamlit run app.py
 ```
 
 To run the app online, click [Moped Predictor App](https://moped-prediction.streamlit.app/)
