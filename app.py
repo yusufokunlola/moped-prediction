@@ -3,11 +3,10 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-import scikitplot as skplt
 from sklearn.preprocessing import OrdinalEncoder
 from sklearn.model_selection import train_test_split 
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import classification_report
+from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.preprocessing import StandardScaler
 from imblearn.over_sampling import SMOTE
 from lime import lime_tabular
@@ -129,13 +128,18 @@ with tab3:
     with col1:
         conf_mat_fig = plt.figure(figsize=(6,6))
         ax1 = conf_mat_fig.add_subplot(111)
-        skplt.metrics.plot_confusion_matrix(y_test, y_pred, ax=ax1, normalize=True)
+        conf_matrix = confusion_matrix(y_test, y_pred, normalize='true')
+        sns.heatmap(conf_matrix, annot=True, fmt='.2f', cmap='Blues', ax=ax1)
+        ax1.set_title("Confusion Matrix")
         st.pyplot(conf_mat_fig, use_container_width=True)
 
     with col2:
         feat_imp_fig = plt.figure(figsize=(6,6))
         ax1 = feat_imp_fig.add_subplot(111)
-        skplt.estimators.plot_feature_importances(rf_classif, feature_names=X.columns, ax=ax1, x_tick_rotation=90)
+        feature_importances = clf.feature_importances_
+        sorted_idx = np.argsort(feature_importances)
+        plt.barh(X.columns[sorted_idx], feature_importances[sorted_idx])
+        plt.xlabel("Random Forest Feature Importance")
         st.pyplot(feat_imp_fig, use_container_width=True)
 
     st.divider()
